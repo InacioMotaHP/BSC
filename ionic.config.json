@@ -1,0 +1,7 @@
+{
+  "name": "shoppingTaua",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

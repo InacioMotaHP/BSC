@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title mode="ios">Empresas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div id="total">
+    <div id="filtros" class="bloco" [hidden]=' cond'>
+    <ion-select color="primary" [(ngModel)]="this.categorias" [value]="this.categorias"
+      (ngModelChange)="FiltroCat(this.categorias)" placeholder="Categorias">
+      <ion-select-option value="alimenticios">Alimentícios </ion-select-option>
+      <ion-select-option value="mercado">Mercados </ion-select-option>
+      <ion-select-option value="servicos">Serviços </ion-select-option>
+      <ion-select-option value="farmacia">Farmácias </ion-select-option>
+      <ion-select-option value="calcados">Calçados </ion-select-option>
+      <ion-select-option value="vestruarios">Vestruários </ion-select-option>
+      <ion-select-option value="cosmeticos">Perfumaria e Cosméticos</ion-select-option>
+      <ion-select-option value="pet">Pet </ion-select-option>
+      <ion-select-option value="variados">variedades e outros </ion-select-option>
+    </ion-select>
+  </div>
+
+  <div class="bloco" id="empresas">
+    <ion-list *ngFor="let empresa of empresas">
+      <div class="empresa bloco">
+        <!--Procura solução, apesar de funcionar-->
+
+        <ion-grid>
+          <ion-row>
+            <ion-col size='4'>
+              <div id="imgEmpresa">
+                <img id='imgEmpresa' [src]="empresa.picture">
+              </div>
+            </ion-col>
+
+            <ion-col>
+              <ion-label>
+                {{ empresa.name }}
+                <p>{{empresa.cat}}</p>
+                <p>{{empresa.telefone1}}</p>
+              </ion-label>
+              <ion-button shape="round" color="danger" (click)="redirectEmpresa(empresa.idEmpresa)">visitar
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+      </div>
+    </ion-list>
+  </div>
+  <div id='msgd' [hidden]='this.msg.length <1'>
+    <ion-label>{{msg}}</ion-label>
+  </div>
+  </div>
+</ion-content>

@@ -1,0 +1,89 @@
+// #464646; fundo
+// #313132; bloco
+// #57d055 letrase detalhes
+
+#total{
+    background: #464646;
+    min-height: 100%;
+    width: 100%;
+}
+.bloco{
+    background: #313132;
+    margin-top: 5px;
+}
+#titulo{
+    color: white;
+    font-size: 23px;
+    text-align: center;
+}
+#ver{
+    text-align: right;
+    font-size: 17px;
+    color: white
+}
+#logo{
+    width: 100%;
+    border: 0;
+    max-height: 300px;
+    min-height: 250px;
+}
+
+#infor{
+    padding: 10px;
+    color:white;
+    
+}
+#produtos{
+    color: white;
+    text-align: center;
+    font-size: 24px;
+}
+ion-list{
+    background-color: #464646;
+    margin: 0px;
+    width: 100%;
+  }
+  #imgProduto{
+    border-radius: 44px;
+    width: 90px;
+    height: 90px;
+  }  
+  .produto{
+    background-color: #313132;
+    margin-bottom: 3px;
+    color: #57d055;
+    font-size: 20px;
+    border-radius: 15px;
+  }
+  P{
+      color: #57d055;
+      font-size: 20px;
+  }
+  ion-footer {
+    background: #c4c4c4;
+    width: 100%;
+    height: 30px;
+    padding: 2%;
+    text-align: center;
+  }
+  ion-slides{
+    min-width: 100%;
+    min-height: 100%;
+    background: #464646;
+
+  }
+  #msgd{
+      color: #57d055;
+      margin-top: 20%;
+      font-size: 30px;
+  }
+  #msgNet{
+    text-align: center;
+  
+    color: #57d055;
+  
+    background-color: #464646;
+    width: auto;
+    height: min(100%);
+    padding-top: 30%;
+  }

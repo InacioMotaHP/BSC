@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title mode="ios">{{empresa.name}}</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-segment mode="md" [(ngModel)]="segment" (ionChange)='segmentChanged($event)'>
+      <ion-segment-button class="txtSegment" value="0">Empresa</ion-segment-button>
+      <ion-segment-button class="txtSegment" value="1">Produtos</ion-segment-button>
+      <ion-segment-button class="txtSegment" value="2">Promoções</ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content>
+
+  <ion-slides pager="false" #slides [options]="slideOpts" (ionSlideDidChange)="slideShanged(slides)"
+    (ionSlidesDidLoad)="slideShanged(slides)">
+
+    <!--Informações-->
+
+    <ion-slide>
+      <div id="msgNet" [hidden]='this.network.type !="none"'>
+        <ion-label>
+          Sem Conexão com a Internet! :/
+        </ion-label><br>
+        <ion-button color="warning" (click)="ionViewWillEnter()">
+          Tentar novamente
+        </ion-button>
+      </div>
+
+      <div id="total" [hidden]='this.network.type =="none"'>
+        <!--IMG LOGO EMPRESA-->
+        <div id="logo">
+          <img id="logo" [src]="empresa.picture" alt="logo empresa">
+        </div>
+
+        <!--Description-->
+        <div class="bloco" id="titulo">
+          <ion-label>{{empresa.description}}</ion-label><br>
+        </div>
+
+        <!--Informações gerais-->
+        <div class="bloco" id="infor">
+          Contatos:<br>
+          <ion-icon name="logo-whatsapp"></ion-icon><a id="ver" text-decoration="none" href="{{whatslink1}}">
+            {{empresa.telefone1}}</a> e
+          <ion-icon name="call-outline"></ion-icon> <a id="ver" href="{{empresa.telefone2}}">{{empresa.telefone2}}</a>
+          <br><br>
+
+          Endereço:<br>
+          <ion-label>Rua: {{empresa.rua}}, N°: {{empresa.numero}}, </ion-label>
+          <ion-label>Bairro: {{empresa.bairro}} </ion-label> <br><br>
+
+          Horários de funcionamento: <br>
+          {{empresa.horarios}}
+
+        </div>
+      </div>
+    </ion-slide>
+
+    <!--Produtos-->
+    <ion-slide>
+      <div id="msgNet" [hidden]='this.network.type !="none"'>
+        <ion-label>
+          Sem Conexão com a Internet! :/
+        </ion-label><br>
+        <ion-button color="warning" (click)="ionViewWillEnter()">
+          Tentar novamente
+        </ion-button>
+      </div>
+
+      <div id="total" [hidden]='this.network.type =="none"'>
+        <div class="bloco" id="produtos">
+          <ion-searchbar animated="true" mode="ios" placeholder="buscar produto" (ionInput)="filterList($event)">
+          </ion-searchbar>
+
+          <ion-list *ngFor="let product of products" [hidden]='product.fornecedor!=empresa.name'>
+            <div>
+
+              <div class="produto bloco">
+
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size='4'>
+                      <img id='imgProduto' [src]="product.picture">
+                    </ion-col>
+
+                    <ion-col>
+                      <ion-label>
+                        {{ product.name }}
+                        <p>R$ {{product.price}}</p>
+                      </ion-label>
+                      <ion-button shape="round" size="small" color="success" (click)="redirectDetalhesProduto(product.id)">visualizar
+                      </ion-button>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </div>
+            </div>
+          </ion-list>
+        </div>
+      </div>
+    </ion-slide>
+
+    <!--Promoções-->
+
+    <ion-slide>
+      <ion-label id='msgd'>
+        NADA AQUI :/
+      </ion-label>
+
+
+
+
+
+      
+    </ion-slide>
+  </ion-slides>
+
+
+</ion-content>

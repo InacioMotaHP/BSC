@@ -1,0 +1,37 @@
+.bloco{
+    background: #313132;
+    margin-top: 5px;
+}
+.blocoCat{
+  background: #313132;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 8px;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#total{
+    background: #464646;
+    min-height: 100%;
+    padding: 5px;
+}
+.msg{
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 30%;
+  font-size: 23px;
+  text-align: center;
+  color: #57d055;
+}
+#msgNet{
+  text-align: center;
+
+  color: #57d055;
+
+  background-color: #464646;
+  width: auto;
+  height: min(100%);
+  padding-top: 30%;
+}

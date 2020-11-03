@@ -1,0 +1,137 @@
+ion-searchbar {
+  margin-top: -5px;
+}
+#atalhos {
+  /* barraDeAtalhos */
+
+  width: 100%;
+  height: 75px;
+  margin-top: 2px;
+  
+  background: #313132;
+}
+.atalho {
+  background: #57d055;
+  border-radius: 15px;
+  width: 100%;
+  height: 52px;
+}
+.iconAtalho {
+  width: 45px;
+  height: 45px;
+  margin-top: 5%;
+}
+#blocoEmpresa {
+  margin-top: 5px;
+  padding-bottom: 5px;
+  background-color: #464646;
+}
+.bloco {
+  background-color: #313132;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 15px;
+
+  .ttlEmpresa {
+    color: #57d055;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 27px;
+    position: inherit;
+
+  }
+  .textDescricao1 {
+    font-family: Arial, Helvetica, sans-serif;
+    border-left-style: solid;
+    color: white;
+    border-color: #57d055;
+    font-size: 15px;
+  }
+  #titulo{
+    color: #57d055
+  }
+  .textDescricao2 {
+    font-family: Arial, Helvetica, sans-serif;
+    border-right-style: solid;
+    color: white;
+    border-color: #57d055;
+    font-size: 15px;
+  }
+  .todos {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 15px;
+  }
+}
+.tot {
+  background-color: #464646;
+  width: auto;
+  height: min(100%);
+  text-align: center;
+  padding-top: 3px;
+}
+#container {
+  text-align: center;
+  background-color: #464646;
+  left: 0;
+  right: 0;
+  top: 50%;
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+ion-footer {
+  background: #c4c4c4;
+  width: 100%;
+  height: 30px;
+  padding: 2%;
+  text-align: center;
+}
+.produto{
+  background-color: #313132;
+  margin: 3px;
+  color: #57d055;
+  font-size: 20px;
+  border-radius: 15px;
+}
+#imgProduto{
+  border-radius: 44px;
+  width: 90px;
+  height: 90px;
+}
+ion-list{
+  background-color: #464646;
+  margin: 0px;
+}
+.logo{
+  margin-top: -2;
+}
+.msgd{
+  text-align: center;
+  color: #57d055;
+  font-size: 20px;
+}
+#msgNet{
+  text-align: center;
+
+  color: #57d055;
+
+  background-color: #464646;
+  width: auto;
+  height: min(100%);
+  padding-top: 30%;
+}

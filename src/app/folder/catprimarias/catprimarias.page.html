@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title mode="ios">Principais Categorias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="msgNet" [hidden]='this.network.type !="none"'>
+    <ion-label>
+      Sem Conexão com a Internet! :/
+    </ion-label><br>
+    <ion-button color="warning" (click)="ionViewWillEnter()">
+      Tentar novamente
+    </ion-button>
+  </div>
+
+  <div id="total" [hidden]='this.network.type =="none"'>
+    <div class="blocoCat" *ngFor="let catPrimaria of categoriasPrimarias" (click)='escolherCatP(catPrimaria.id)'>
+      {{catPrimaria.id}}
+      <ion-icon color="success" alot="end" name="caret-forward-outline"></ion-icon>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title mode="ios">Meu Carrinho</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="msgNet" [hidden]='this.network.type !="none"'>
+    <ion-label>
+      Sem Conexão com a Internet! :/
+    </ion-label><br>
+    <ion-button color="warning" (click)='ionViewWillEnter()'>
+      Tentar novamente
+    </ion-button>
+  </div>
+
+  <div id="total"  [hidden]='this.network.type =="none"'>
+  
+    <div class="msgd" [hidden]='msg.length<1'>
+      <ion-label class="msg">{{msg}} </ion-label>
+    </div>
+    <div *ngFor="let forn of fornecedor">
+      <h1 id="title">{{forn}}</h1>
+      <div id="pedido" *ngFor="let product of products">
+        <div class="bloco" *ngIf="forn == product.fornecedor">
+          <ion-grid>
+            <ion-row>
+              <ion-col size='2'>
+                <ion-icon color='success' name="construct-outline" (click)='alterQuant(product.id)'></ion-icon>
+              </ion-col>
+              <ion-col size="9"></ion-col>
+              <ion-col size='1'>
+                <ion-icon name="trash-outline" mode="ios" fill="clear" color="danger"
+                  (click)="confirmExclusao('',product.id, 2)"></ion-icon>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size='4'>
+                <img id='imgProduto' [src]="product.picture">
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  {{ product.name }}
+                  <p>R$ {{product.price}} X {{product.quant}} / {{product.unidade}}(s)</p>
+                  <p>SubTotal: R$ {{(product.price*product.quant).toFixed(2)}}</p>
+
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+      <ion-row>
+        <ion-col size='6'>
+          <ion-button color="danger" shape="round" size="small" (click)="confirmExclusao(forn, '', 1)">
+            excluir pedido
+          </ion-button>
+        </ion-col>
+        <ion-col size='6'>
+          <ion-button color="success" shape="round" size="small" (click)="confirmarPedido(forn)">
+            Confirmar Pedido
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <!--
+  <ion-list *ngFor="let forn of fornecedor">
+    <h1>{{forn}}</h1>
+    <hr size="100%" color="black">
+    <ion-list><br><br>
+      <ion-item-sliding *ngFor="let product of products">
+
+        <ion-item *ngIf="forn == product.fornecedor"
+          [routerLink]="['../../folder/detalhes-produto', product.idProduct]">
+          <ion-avatar slot="start">
+            <img [src]="product.picture">
+          </ion-avatar>
+
+          <ion-label>
+            <strong>{{ product.name }}</strong>
+            <p>
+              <ion-note color="primary" slot="end" *ngIf="product.price">{{ product.price | currency: 'BRL' }}
+              </ion-note>
+            </p>
+            <ion-label>{{product.quant}}*{{product.unidade}}(s)</ion-label>
+          </ion-label>
+          <ion-label slot="end">SubTotal: {{product.quant*product.price}} </ion-label>
+
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="deleteProduct(product.id)">
+            <ion-icon slot="top" name="trash"></ion-icon>
+            Excluir
+          </ion-item-option>
+        </ion-item-options>
+
+      </ion-item-sliding>
+      <ion-button (click)="confirmarPedido(forn)">
+        Confirmar pedido
+      </ion-button>
+      <ion-button color="danger" (click)="confirmExclusao(forn)">
+        excluir pedido
+      </ion-button>
+
+    </ion-list>
+--
+  </ion-list>-->
+
+
+
+</ion-content>

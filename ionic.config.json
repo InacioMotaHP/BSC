@@ -1,7 +1,8 @@
 {
   "name": "shoppingTaua",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

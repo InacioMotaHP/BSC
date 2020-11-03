@@ -1,0 +1,282 @@
+<ion-header>
+
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button mode="ios"></ion-menu-button>
+    </ion-buttons>
+    <ion-title id="titulo" mode="ios">Buyers Sheeps</ion-title><br>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-searchbar animated="true" [disabled]='this.network.type == "none"' mode="ios" placeholder="O que deseja pra hoje?" (ionInput)="filterList($event)">
+    </ion-searchbar>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div class="tot" >
+    <div>
+      <img class="logo" [hidden]='cond' width="100%" height="100%" src='../../../assets/imagens/header.png'>
+    </div>
+
+    <div id="atalhos" [hidden]='cond'>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div class="atalho" (click)="atalho('perfil')">
+              <img class="iconAtalho" src="../../../assets/imagens/icons/person.png">
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="atalho" (click)="atalho('favoritos')">
+              <img class="iconAtalho" src="../../../assets/imagens/icons/favIcon.png">
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="atalho" (click)="atalho('catprimarias')">
+              <!-- <img class="iconAtalho" src="../../../assets/imagens/icons/top5.png"> outro icone de top5-->
+              <ion-icon class="iconAtalho" name='file-tray-stacked'></ion-icon>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="atalho" (click)="atalho('pedidos')">
+              <ion-icon class="iconAtalho" name='cash-outline'></ion-icon>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="atalho" (click)="atalho('carrinho')">
+              <img class="iconAtalho" src="../../../assets/imagens/icons/carIcon.png">
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div id="catalogoProdutos" [hidden]='!cond'>
+      <ion-list *ngFor="let product of products">
+        <div class="produto">
+          <!--Procura solução, apesar de funcionar-->
+
+          <ion-grid>
+            <ion-row>
+              <ion-col size='4'>
+                <img id='imgProduto' [src]="product.picture">
+              </ion-col>
+
+              <ion-col>
+                <ion-label>
+                  {{ product.name }}
+                  <p>Fornecedor: {{product.fornecedor}}</p>
+                </ion-label>
+                <ion-button shape="round" color="danger" [routerLink]="['../../folder/detalhes-produto', product.id]">
+                  visualizar</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+
+        </div>
+      </ion-list>
+    </div>
+
+
+    <div id="blocoEmpresa" [hidden]='cond'>
+
+      <!--//bloco Mercado -->
+      <div class="bloco">
+        <ion-grid>
+          <ion-row>
+            <ion-title class="ttlEmpresa">Mercados</ion-title>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4">
+              <img src="../../../assets/imagens/mercadoIcon.png">
+            </ion-col>
+            <ion-col>
+              <div class="textDescricao1">
+                <ion-label>
+                  Faça suas compras
+                  sem sair do sofá, com
+                  alguns cliques e 100%
+                  de segurança!
+                </ion-label><br>
+                <div class="btnEmpresa">
+                  <ion-button shape="round" size="small" [routerLink]="['../../folder/catalogo-empresas', 'mercado']"
+                    color="danger">Navegar</ion-button>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+
+      <!--//bloco Farmacia -->
+      <div class="bloco">
+        <ion-grid>
+          <ion-row>
+            <ion-title class="ttlEmpresa">Farmácias</ion-title>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="textDescricao2">
+                <ion-label>
+                  Seus medicamentos
+                  direto na sua porta,
+                  sem custos adicionais.
+                </ion-label><br>
+                <div class="btnEmpresa">
+                  <ion-button shape="round" size="small" [routerLink]="['../../folder/catalogo-empresas', 'farmacia']"
+                    color="danger">Navegar</ion-button>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col size="4">
+              <img src="../../../assets/imagens/farmaciaIcon.png">
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+
+      <!--//bloco Alimenticios -->
+      <div class="bloco">
+        <ion-grid>
+          <ion-row>
+            <ion-title class="ttlEmpresa">Alimentícios</ion-title>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4">
+              <img src="../../../assets/imagens/alimentosIcon.png">
+            </ion-col>
+            <ion-col>
+              <div class="textDescricao1">
+                <ion-label>
+                  Peça seu jantar, lanche,
+                  sobremesa e muito
+                  mais, pagando somente
+                  no recebimento!
+                </ion-label><br>
+                <div class="btnEmpresa">
+                  <ion-button shape="round" size="small" [routerLink]="['../../folder/catalogo-empresas', 'alimentos']"
+                    color="danger">Navegar</ion-button>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+
+      <!--//bloco Calçados -->
+      <div class="bloco">
+        <ion-grid>
+          <ion-row>
+            <ion-title class="ttlEmpresa">Calçados</ion-title>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="textDescricao2">
+                <ion-label>
+                  Escolha seu modelo!
+                  Basquete, balada ou
+                  trabalho? o que vai
+                  ser?
+                </ion-label><br>
+                <div class="btnEmpresa">
+                  <ion-button shape="round" size="small" [routerLink]="['../../folder/catalogo-empresas', 'calcados']"
+                    color="danger">Navegar</ion-button>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col size="4">
+              <img src="../../../assets/imagens/calcadosIcon.png">
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <!--//bloco Vestruarios -->
+      <div class="bloco">
+        <ion-grid>
+          <ion-row>
+            <ion-title class="ttlEmpresa">Vestuários</ion-title>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4">
+              <img src="../../../assets/imagens/vestruarioIcon.png">
+            </ion-col>
+            <ion-col>
+              <div class="textDescricao1">
+                <ion-label>
+                  Não esqueça de escolher
+                  o melhor look para suas
+                  ocasiões especiais!
+                </ion-label><br>
+                <div class="btnEmpresa">
+                  <ion-button shape="round" size="small"
+                    [routerLink]="['../../folder/catalogo-empresas', 'vestruarios']" color="danger">Navegar</ion-button>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+
+      <!--//bloco Serviços -->
+      <div class="bloco">
+        <ion-grid>
+          <ion-row>
+            <ion-title class="ttlEmpresa">Serviços</ion-title>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="textDescricao2">
+                <ion-label>
+                  Encontre ainda, o profissional certo para realizar aquela tarefa complicada!
+                </ion-label><br>
+                <div class="btnEmpresa">
+                  <ion-button shape="round" size="small" [routerLink]="['../../folder/catalogo-empresas', 'servicos']"
+                    color="danger">Navegar</ion-button>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col size="4">
+              <img src="../../../assets/imagens/servicos.png">
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+
+      <!--//bloco veja todos -->
+      <div class="bloco">
+        <ion-grid>
+          <ion-row>
+            <ion-title class="ttlEmpresa">Veja todos</ion-title>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="todos">
+                <ion-label>
+                  Veja todas as possibilidades, todas as empresas catalogadas estão aqui!
+                </ion-label><br>
+                <div class="btnEmpresa">
+                  <ion-button shape="round" size="small" [routerLink]="['../../folder/catalogo-empresas']"
+                    color="danger">Navegar</ion-button>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+    </div>
+    <ion-footer>
+      Inácio Mota 2020
+    </ion-footer>
+  </div>
+</ion-content>

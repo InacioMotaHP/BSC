@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title mode="ios">Detalhes</ion-title>
+
+    <ion-icon id="cart" name="cart-outline" (click)="clicksCar()" slot="end">
+    </ion-icon>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div id="msgNet" [hidden]='this.network.type !="none"'>
+    <ion-label>
+      Sem Conexão com a Internet! :/
+    </ion-label><br>
+    <ion-button color="warning" (click)="ionViewWillEnter()">
+      Tentar novamente
+    </ion-button>
+  </div>
+
+  <div id="total" [hidden]='this.network.type =="none"'>
+    <ion-slides>
+      <ion-slide>
+        <div class="imgP">
+          <div class='indis' [hidden]='this.product.disponivel == true'>
+            <label class='indis'>
+              INDISPONÍVEL
+            </label>
+          </div>
+          <img class="imgP" [src]="product.picture">
+        </div>
+      </ion-slide>
+
+    </ion-slides>
+
+    <div id="produto">
+      <div id="title">
+
+        <ion-grid>
+          <ion-row>
+            <ion-col size='10'>
+              <ion-title>{{product.name}}</ion-title>
+            </ion-col>
+            <ion-col>
+              <ion-icon color='danger' (click)="saveFav()" name={{like}}></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </div>
+    </div>
+
+    <div id="compra">
+      <ion-grid>
+        <ion-row>
+
+          <ion-col size="7">
+            <ion-row>
+              <ion-label id="preco">
+                R${{product.price}}/{{product.unidade}}
+              </ion-label>
+            </ion-row>
+            <ion-row>
+              <ion-label id="precot">
+                Total: R${{total}}
+              </ion-label>
+            </ion-row>
+          </ion-col>
+
+          <ion-col size='1'>
+            <ion-icon name="remove-outline" (click)="quantidade(-1)" id="menos"></ion-icon>
+          </ion-col>
+          <ion-col size='2'>
+            <ion-input width="20px" id="quanttext" [disabled]="true" [(ngModel)]="product.quant" color="light"
+              type="number">
+            </ion-input>
+          </ion-col>
+          <ion-col size='1'>
+            <ion-icon name="add-outline" mode="ios" fill="clear" (click)="quantidade(+1)" color="success">
+            </ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="2">
+
+          </ion-col>
+          <ion-col>
+            <div id='addCar'>
+              <ion-button shape="round" size="default" id="addCar" color="danger" (click)="AddCar()">Add ao carrinho
+              </ion-button><br>
+              <ion-label (click)="visitarEmpresa()">Visite o fornecedor</ion-label>
+            </div>
+          </ion-col>
+          <ion-col size="2">
+
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+
+    </div>
+
+    <div id="descricao">
+      <ion-label color="white" font-size="25px">Descrição/Detalhes deste produto!</ion-label><br>
+      <p>
+        {{product.description}}
+      </p>
+    </div>
+
+  </div>
+</ion-content>

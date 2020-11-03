@@ -1,0 +1,150 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button mode="ios"></ion-menu-button>
+    </ion-buttons>
+    <ion-title mode="ios">Meus Pedidos</ion-title>
+
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-segment mode="md" [(ngModel)]="segment" (ionChange)='segmentChanged($event)'>
+      <ion-segment-button class="txtSegment" value="0">Realizados</ion-segment-button>
+      <ion-segment-button class="txtSegment" value="1">Em Andamento</ion-segment-button>
+      <ion-segment-button class="txtSegment" value="2">Cancelados</ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-slides pager="false" #slides [options]="slideOpts" (ionSlideDidChange)="slideShanged(slides)"
+    (ionSlidesDidLoad)="slideShanged(slides)">
+
+    <ion-slide>
+      <div id="msgNet" [hidden]='this.network.type !="none"'>
+        <ion-label>
+          Sem Conexão com a Internet! :/
+        </ion-label><br>
+        <ion-button color="warning" (click)="ionViewWillEnter()">
+          Tentar novamente
+        </ion-button>
+      </div>
+
+      <div id="total" [hidden]='this.network.type =="none"'>
+        <div class='msg' [hidden]="!this.msgVazio1">
+          {{this.msgVazio1}}
+        </div>
+        <div class="bloco" [hidden]='this.pedidos.length<1'>
+          <ion-list *ngFor="let pedis of pedidos">
+            <div class="pedido bloco">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size='4'>
+                    <img id='imgProduto' [src]="pedis.empresaPicture">
+                  </ion-col>
+                  <ion-col>
+                    <ion-label>
+                      {{ pedis.fornecedor }}
+                      <p>Total: R$ {{pedis.ValorTotal.toFixed(2)}} </p>
+                      <p>Status: {{pedis.status}}</p>
+                    </ion-label>
+
+                    <ion-button shape="round" color="danger" (click)="Visualizar(pedis.cod)">
+                      Detalhes</ion-button>
+                  </ion-col>
+                </ion-row>
+
+              </ion-grid>
+            </div>
+          </ion-list>
+
+        </div>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div id="msgNet" [hidden]='this.network.type !="none"'>
+        <ion-label>
+          Sem Conexão com a Internet! :/
+        </ion-label><br>
+        <ion-button color="warning" (click)="ionViewWillEnter()">
+          Tentar novamente
+        </ion-button>
+      </div>
+
+      <div id="total" [hidden]='this.network.type =="none"'>
+        <div class='msg' [hidden]="!this.msgVazio2">
+          {{this.msgVazio2}}
+        </div>
+        <div class="bloco" [hidden]='this.pedidosA.length<1'>
+
+          <ion-list *ngFor="let pedis of pedidosA">
+            <div class="pedido bloco">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size='4'>
+                    <img id='imgProduto' [src]="pedis.empresaPicture">
+                  </ion-col>
+                  <ion-col>
+                    <ion-label>
+                      {{ pedis.fornecedor }}
+                      <p>Total: R$ {{pedis.ValorTotal.toFixed(2)}} </p>
+                      <p>Status: {{pedis.status}}</p>
+                    </ion-label>
+                    <ion-button shape="round" color="danger" (click)="Visualizar(pedis.cod)">
+                      Detalhes</ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </ion-list>
+
+        </div>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div id="msgNet" [hidden]='this.network.type !="none"'>
+        <ion-label>
+          Sem Conexão com a Internet! :/
+        </ion-label><br>
+        <ion-button color="warning" (click)="ionViewWillEnter()">
+          Tentar novamente
+        </ion-button>
+      </div>
+
+      <div id="total" [hidden]='this.network.type =="none"'>
+        <div class='msg' [hidden]="!this.msgVazio3">
+          {{this.msgVazio3}}
+        </div>
+        <div class="bloco" [hidden]='this.pedidosC.length<1'>
+
+          <ion-list *ngFor="let pedis of pedidosC">
+            <div class="pedido bloco">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size='4'>
+                    <img id='imgProduto' [src]="pedis.empresaPicture">
+                  </ion-col>
+                  <ion-col>
+                    <ion-label>
+                      {{ pedis.fornecedor }}
+                      <p>Total: R$ {{pedis.ValorTotal.toFixed(2)}} </p>
+                      <p>Status: {{pedis.status}}</p>
+                    </ion-label>
+                    <ion-button shape="round" color="danger" (click)="Visualizar(pedis.cod)">
+                      Detalhes</ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </ion-list>
+
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+
+
+</ion-content>
